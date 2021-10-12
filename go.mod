@@ -1,4 +1,4 @@
-module yubikey-file-crypto
+module github.com/FirosStuart/yubikey-file-crypto
 
 go 1.16
 
