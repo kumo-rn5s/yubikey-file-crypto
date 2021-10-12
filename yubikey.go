@@ -112,12 +112,12 @@ func getCertificate(yk *piv.YubiKey) *x509.Certificate {
 }
 
 func (core *Core) GetECDSAPublicKey() {
-	if err := getECDSAPublicKey(core); err != nil {
+	if err := core.getECDSAPublicKey(); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func getECDSAPublicKey(core *Core) error {
+func (core *Core) getECDSAPublicKey() error {
 	cert := getCertificate(core.YK)
 	newPubKeyECDSA, ok := cert.PublicKey.(*ecdsa.PublicKey)
 	if !ok {
