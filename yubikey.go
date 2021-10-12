@@ -181,5 +181,5 @@ func (core *Core) GenerateAESKey() []byte {
 	if err != nil {
 		log.Fatal(err)
 	}
-	return bytes
+	return bytes[:24]
 }
