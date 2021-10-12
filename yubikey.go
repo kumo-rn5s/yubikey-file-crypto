@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crypto"
 	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
@@ -22,8 +21,6 @@ type Core struct {
 	Pin           []byte
 	Pub           *ecdsa.PublicKey
 	Priv          *piv.ECDSAPrivateKey
-	OriginPub     *crypto.PublicKey
-	OriginPriv    *crypto.PrivateKey
 }
 
 func (core *Core) setPinToYubiKey() {
@@ -155,9 +152,6 @@ func (core *Core) getPrivateKey() error {
 		return errors.New("cannnot Transfrom this key")
 	}
 	core.Priv = ykPriv
-	originPub := ykPriv.Public()
-	core.OriginPub = &originPub
-	core.OriginPriv = &priv
 	return nil
 }
 

@@ -81,12 +81,6 @@ func checkObjects(core *Core) error {
 	if core.Priv == nil {
 		return errors.New("YubiKey ECDSA Private Key Empty")
 	}
-	if core.OriginPriv == nil {
-		return errors.New("origin Private Key Empty")
-	}
-	if core.OriginPub == nil {
-		return errors.New("origin Public Key Empty")
-	}
 	if core.YK == nil {
 		return errors.New("yubikey engine empty")
 	}
