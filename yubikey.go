@@ -183,3 +183,10 @@ func (core *Core) GenerateAESKey() []byte {
 	}
 	return bytes[:24]
 }
+
+func (core *Core) ResetPin() {
+	log.Println("Resetting YubiKey PIV applet...")
+	if err := core.YK.Reset(); err != nil {
+		log.Fatalln("Failed to reset YubiKey:", err)
+	}
+}
