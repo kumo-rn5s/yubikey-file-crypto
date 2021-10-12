@@ -10,6 +10,7 @@ import (
 
 func main() {
 	setupFlag := flag.Bool("setup", false, "setup: configure a new YubiKey")
+	resetFlag := flag.Bool("reset", false, "reset: reset a YubiKey")
 	encryptFlag := flag.Bool("encrypt", false, "encrypt: encrypt some file")
 	fileNameFlag := flag.String("filename", "", "filename: file to encrypt or decrypt")
 	decryptFlag := flag.Bool("decrypt", false, "decrypt: decrypt some file")
@@ -21,7 +22,9 @@ func main() {
 
 	if *setupFlag {
 		log.SetFlags(0)
-
+		if *resetFlag {
+			core.ResetPin()
+		}
 		pin := setPinPrompt()
 		core.Pin = pin
 
@@ -34,13 +37,13 @@ func main() {
 
 		core.AuthenticatePin()
 		log.Println("Yubikey Configuration Authenticated")
-	}
 
-	core.GetECDSAPublicKey()
-	core.GetPrivateKey()
+		core.GetECDSAPublicKey()
+		core.GetPrivateKey()
 
-	if err := checkObjects(core); err != nil {
-		log.Fatal(err)
+		if err := checkObjects(core); err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	if *encryptFlag {
