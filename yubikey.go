@@ -174,3 +174,12 @@ func (core *Core) GetManagementKey() {
 	key := *meta.ManagementKey
 	core.ManagementKey = key
 }
+
+func (core *Core) GenerateAESKey() []byte {
+	log.Println("Press your Yubikey")
+	bytes, err := core.Priv.SharedKey(core.Pub)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return bytes
+}

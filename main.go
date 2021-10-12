@@ -51,8 +51,8 @@ func main() {
 		if fileNameFlag == nil {
 			log.Fatal("Must specify a file name")
 		}
-		AESKey := core.ManagementKey[:]
-		AESKey = append(AESKey, core.Pin...)
+
+		AESKey := core.GenerateAESKey()
 
 		filename := EncryptFile(*fileNameFlag, AESKey)
 		log.Println("Yubikey File Encryted Successfully")
@@ -67,8 +67,8 @@ func main() {
 		if fileNameFlag == nil {
 			log.Fatal("Must specify a file name")
 		}
-		AESKey := core.ManagementKey[:]
-		AESKey = append(AESKey, core.Pin...)
+
+		AESKey := core.GenerateAESKey()
 		filename := DecryptFile(*fileNameFlag, AESKey)
 		log.Println("Yubikey File Decryted Successfully")
 		log.Println(filename)
