@@ -45,8 +45,8 @@ func getPINPrompt() []byte {
 	if err != nil {
 		log.Fatalln("Failed to read PIN:", err)
 	}
-	if len(pin) != 8 {
-		log.Fatalln("The PIN needs to be 8 characters.")
+	if len(pin) == 0 || len(pin) > 8 {
+		log.Fatalln("The PIN needs to be 6 - 8 characters.")
 	}
 
 	return pin
@@ -54,14 +54,14 @@ func getPINPrompt() []byte {
 
 func setPinPrompt() []byte {
 
-	fmt.Print("Choose a new 8bit PIN/PUK: ")
+	fmt.Print("Choose a new 6-8 bit PIN/PUK: ")
 	pin, err := term.ReadPassword(int(os.Stdin.Fd()))
 	fmt.Print("\n")
 	if err != nil {
 		log.Fatalln("Failed to read PIN:", err)
 	}
-	if len(pin) != 8 {
-		log.Fatalln("The PIN needs to be 8 characters.")
+	if len(pin) == 0 || len(pin) > 8 {
+		log.Fatalln("The PIN needs to be 6 - 8 characters.")
 	}
 	fmt.Print("Repeat PIN/PUK: ")
 	repeat, err := term.ReadPassword(int(os.Stdin.Fd()))
