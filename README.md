@@ -1,5 +1,7 @@
 # yubikey-file-crypto
 
+ [![Go Reference](https://pkg.go.dev/badge/github.com/FirosStuart/yubikey-file-crypto.svg)](https://pkg.go.dev/github.com/FirosStuart/yubikey-file-crypto)
+
 Use yubikey to encrypt/decrypt file
 
 File Encypt/Decrypt use AES-256-GCM Key
