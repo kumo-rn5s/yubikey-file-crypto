@@ -15,9 +15,9 @@ func main() {
 	core := &Core{}
 	core.YK = yk
 
-	if *flag.SetupFlag {
+	if *flag.Setup {
 		log.SetFlags(0)
-		if *flag.ResetFlag {
+		if *flag.Reset {
 			core.ResetPin()
 		}
 		pin := setPinPrompt()
@@ -41,33 +41,33 @@ func main() {
 		}
 	}
 
-	if *flag.EncryptFlag {
+	if *flag.Encrypt {
 		if err := ensureYK(core.YK); err != nil {
 			log.Fatal("Need Keep YubiKey inserted")
 		}
 
-		if flag.FileNameFlag == nil {
+		if flag.FileName == nil {
 			log.Fatal("Must specify a file name")
 		}
 
 		AESKey := core.GenerateAESKey()
 
-		filename := EncryptFile(*flag.FileNameFlag, AESKey)
+		filename := EncryptFile(*flag.FileName, AESKey)
 		log.Println("Yubikey File Encryted Successfully")
 		log.Println(filename)
 	}
 
-	if *flag.DecryptFlag {
+	if *flag.Decrypt {
 		if err := ensureYK(core.YK); err != nil {
 			log.Fatal("Need Keep YubiKey inserted")
 		}
 
-		if flag.FileNameFlag == nil {
+		if flag.FileName == nil {
 			log.Fatal("Must specify a file name")
 		}
 
 		AESKey := core.GenerateAESKey()
-		filename := DecryptFile(*flag.FileNameFlag, AESKey)
+		filename := DecryptFile(*flag.FileName, AESKey)
 		log.Println("Yubikey File Decryted Successfully")
 		log.Println(filename)
 	}

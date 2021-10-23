@@ -8,11 +8,11 @@ import (
 func flagTest() {
 	var flagtest FlagSetter
 	flagtest.FlagSetting()
-	fmt.Println(*flagtest.SetupFlag)
-	fmt.Println(*flagtest.ResetFlag)
-	fmt.Println(*flagtest.DecryptFlag)
-	fmt.Println(*flagtest.EncryptFlag)
-	fmt.Println(*flagtest.FileNameFlag)
+	fmt.Println(*flagtest.Setup)
+	fmt.Println(*flagtest.Reset)
+	fmt.Println(*flagtest.Decrypt)
+	fmt.Println(*flagtest.Encrypt)
+	fmt.Println(*flagtest.FileName)
 }
 
 func ExampleFlag() {

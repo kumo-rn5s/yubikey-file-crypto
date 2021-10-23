@@ -10,18 +10,18 @@ const (
 )
 
 type FlagSetter struct {
-	FileNameFlag *string // default defaultFlagString
-	SetupFlag    *bool   // default flagBoolIsNil
-	ResetFlag    *bool   // default flagBoolIsNil
-	EncryptFlag  *bool   // default flagBoolIsNil
-	DecryptFlag  *bool   // default flagBoolIsNil
+	FileName *string // default defaultFlagString
+	Setup    *bool   // default flagBoolIsNil
+	Reset    *bool   // default flagBoolIsNil
+	Encrypt  *bool   // default flagBoolIsNil
+	Decrypt  *bool   // default flagBoolIsNil
 }
 
 func (p *FlagSetter) FlagSetting() {
-	p.SetupFlag = flag.Bool("setup", flagBoolIsNil, "configure a new YubiKey")
-	p.ResetFlag = flag.Bool("reset", flagBoolIsNil, "reset a YubiKey")
-	p.EncryptFlag = flag.Bool("encrypt", flagBoolIsNil, "encrypt some file")
-	p.FileNameFlag = flag.String("filename", defaultFlagString, "file to encrypt or decrypt")
-	p.DecryptFlag = flag.Bool("decrypt", flagBoolIsNil, "decrypt some file")
+	p.Setup = flag.Bool("setup", flagBoolIsNil, "configure a new YubiKey")
+	p.Reset = flag.Bool("reset", flagBoolIsNil, "reset a YubiKey")
+	p.Encrypt = flag.Bool("encrypt", flagBoolIsNil, "encrypt some file")
+	p.FileName = flag.String("filename", defaultFlagString, "file to encrypt or decrypt")
+	p.Decrypt = flag.Bool("decrypt", flagBoolIsNil, "decrypt some file")
 	flag.Parse()
 }
